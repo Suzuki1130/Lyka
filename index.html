@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lyka! Hurry up!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    /* Toilet box */
+    .toilet {
+      width: 200px;
+      height: 220px;
+      background: white;
+      border: 4px solid #333;
+      border-radius: 10px;
+      margin: 30px auto;
+      position: relative;
+    }
+
+    /* Door line */
+    .toilet::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #333;
+      transform: translateX(-50%);
+    }
+
+    /* Leg */
+    .leg {
+      width: 40px;
+      height: 30px;
+      background: #f1c27d;
+      position: absolute;
+      bottom: -30px;
+      left: 80px;
+      border-radius: 0 0 10px 10px;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 12px 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: #ff9800;
+      color: white;
+    }
+
+    button:hover {
+      background: #e68900;
+    }
+
+    .progress {
+      width: 300px;
+      height: 25px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      margin: 20px auto;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0%;
+      background: #4caf50;
+      transition: width 0.3s;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚽 Lyka! Hurry up!</h1>
+
+  <div class="toilet">
+    <div class="leg"></div>
+  </div>
+
+  <button onclick="poopFaster()">Make Lyka poop faster!</button>
+
+  <div class="progress">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <div class="message" id="message">Lyka is struggling...</div>
+
+  <script>
+    let progress = 0;
+
+    function poopFaster() {
+      if (progress >= 100) return;
+
+      progress += Math.floor(Math.random() * 10) + 5;
+      if (progress > 100) progress = 100;
+
+      document.getElementById("bar").style.width = progress + "%";
+
+      const msg = document.getElementById("message");
+
+      if (progress < 30) {
+        msg.textContent = "Lyka is still fighting for their life 💀";
+      } else if (progress < 60) {
+        msg.textContent = "It's working... faster!! 😭";
+      } else if (progress < 100) {
+        msg.textContent = "ALMOST DONE 💩💨";
+      } else {
+        msg.textContent = "🎉 Lyka is finally DONE! 🎉";
+      }
+    }
+  </script>
+
+</body>
+</html>
